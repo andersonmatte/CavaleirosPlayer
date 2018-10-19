@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">CavaleirosPlayer</string>
+
+    <string name="saga1">Saga do Santuário</string>
+    <string name="saga1_1">A Guerra Galáctica</string>
+    <string name="saga1_2">Os Cavaleiros Negros</string>
+    <string name="saga1_3">Forças Ocultas no Santuário</string>
+    <string name="saga1_4">Os Cavaleiros de Prata</string>
+    <string name="saga1_5">Os Cavaleiros de Ouro</string>
+    <string name="saga1_6">A Batalha das Doze Casas</string>
+
+    <string name="saga2">Saga de Asgard</string>
+
+    <string name="saga3">Saga de Poseidon</string>
+
+    <string name="saga4">Saga de Hades</string>
+    <string name="saga4_1">Fase Santuário</string>
+    <string name="saga4_2">Fase Inferno</string>
+    <string name="saga4_3">Fase Elísios</string>
+
+</resources>
