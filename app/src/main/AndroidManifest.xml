@@ -18,7 +18,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".projeto.activity.VideoPlayerActivity" />
+        <activity android:name=".projeto.activity.VideoPlayerActivity" android:screenOrientation="landscape"/>
         <activity android:name=".projeto.activity.SagaActivity" />
         <activity android:name=".projeto.activity.EpisodioActivity"></activity>
     </application>

@@ -3,8 +3,10 @@ package br.com.andersonmatte.cavaleirosplayer.projeto.activity;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -18,19 +20,25 @@ import org.json.JSONTokener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
 import br.com.andersonmatte.cavaleirosplayer.R;
 import br.com.andersonmatte.cavaleirosplayer.projeto.entidade.Episodio;
 import br.com.andersonmatte.cavaleirosplayer.projeto.entidade.Saga;
+import br.com.andersonmatte.cavaleirosplayer.projeto.infra.WebViewClientImpl;
 
 public class VideoPlayerActivity extends AppCompatActivity {
 
     private Saga saga;
     private String TAG = "Executando Video";
     private VideoView videoView;
+    MediaController mediaControls;
+
     List<Episodio> listaEpisodio = new ArrayList<>();
+
+    //private WebView myWebView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +48,7 @@ public class VideoPlayerActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getBundleExtra("saga");
         if (bundle != null) {
             this.saga = (Saga) bundle.getSerializable("resultado");
-            videoView = findViewById(R.id.video_view);
+            videoView = findViewById(R.id.videoView);
             // Checa a saga recebida e .
             this.populaListaEpisodiosPorSaga(this.saga.getNomeSaga());
             if (!this.listaEpisodio.isEmpty()) {
@@ -61,9 +69,6 @@ public class VideoPlayerActivity extends AppCompatActivity {
                     break;
                 case "Saga de Poseidon":
                     idJson = R.raw.saga_poseidon;
-                    break;
-                case "Saga de Hades":
-                    idJson = R.raw.saga_hades;
                     break;
             }
 
@@ -90,18 +95,40 @@ public class VideoPlayerActivity extends AppCompatActivity {
 
     //Método responsável pela execução dos videos.
     public void executaVideo(String urlVideo){
-        videoView.setVideoPath(urlVideo);
-        MediaController mediaController = new MediaController(this);
-        mediaController.setAnchorView(videoView);
-        videoView.setMediaController(mediaController);
-        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                Log.i(TAG, "Duration = " +
-                        videoView.getDuration());
-            }
-        });
+
+//        myWebView = (WebView) findViewById(R.id.webview);
+//
+//        WebViewClientImpl webViewClient = new WebViewClientImpl(this);
+//        myWebView.setWebViewClient(webViewClient);
+//
+//        myWebView.loadUrl("https://trueliketop.org/play/player/serverjw.php\\?f=cavaleiros-do-zodiaco/dub/97.mp4");
+//
+//        //Habilitando o JavaScript
+//        WebSettings webSettings = myWebView.getSettings();
+//        webSettings.setJavaScriptEnabled(true);
+
+        String url = "http://trueliketop.org/play/player/serverjw.php\\?f=cavaleiros-do-zodiaco/dub/97.mp4";
+        videoView.setVideoURI(Uri.parse(url));
+        videoView.requestFocus();
         videoView.start();
+
+
+       /* String url = "https://trueliketop.org/play/player/serverjw.php\\?f=cavaleiros-do-zodiaco/dub/97.mp4";
+       // Uri src = Uri.parse(url);
+
+        videoView.setVideoURI(Uri.parse(url));
+        videoView.setMediaController(new MediaController(this));
+        //videoView.setVideoPath(urlVideo);
+//        MediaController mediaController = new MediaController(this);
+//        mediaController.setAnchorView(videoView);
+//        videoView.setMediaController(mediaController);
+//        videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mp) {
+//                Log.i(TAG, "Duration = " +
+//                        videoView.getDuration());
+//            }
+//        });*/
     }
 
 }

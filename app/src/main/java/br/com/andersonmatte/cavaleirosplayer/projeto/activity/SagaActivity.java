@@ -2,14 +2,14 @@ package br.com.andersonmatte.cavaleirosplayer.projeto.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import br.com.andersonmatte.cavaleirosplayer.R;
 import br.com.andersonmatte.cavaleirosplayer.projeto.entidade.Saga;
@@ -37,18 +37,10 @@ public class SagaActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
     }
 
-    public void montaListaSaga(){
+    public void montaListaSaga() {
         Saga saga1 = new Saga();
         saga1.setNomeSaga(this.getResources().getString(R.string.saga1));
         saga1.setImagemSaga("@drawable/sagasantuario");
-        List<String> subSaga1 = new ArrayList<String>();
-        subSaga1.add(this.getResources().getString(R.string.saga1_1));
-        subSaga1.add(this.getResources().getString(R.string.saga1_2));
-        subSaga1.add(this.getResources().getString(R.string.saga1_3));
-        subSaga1.add(this.getResources().getString(R.string.saga1_4));
-        subSaga1.add(this.getResources().getString(R.string.saga1_5));
-        subSaga1.add(this.getResources().getString(R.string.saga1_6));
-        saga1.setNomeSubSaga(subSaga1);
         this.listaSaga.add(saga1);
         Saga saga2 = new Saga();
         saga2.setNomeSaga(this.getResources().getString(R.string.saga2));
@@ -58,15 +50,6 @@ public class SagaActivity extends AppCompatActivity {
         saga3.setNomeSaga(this.getResources().getString(R.string.saga3));
         saga3.setImagemSaga("@drawable/sagaposeidon");
         this.listaSaga.add(saga3);
-        Saga saga4 = new Saga();
-        saga4.setNomeSaga(this.getResources().getString(R.string.saga4));
-        saga4.setImagemSaga("@drawable/sagahades");
-        List<String> subSaga2 = new ArrayList<String>();
-        subSaga2.add(this.getResources().getString(R.string.saga4_1));
-        subSaga2.add(this.getResources().getString(R.string.saga4_2));
-        subSaga2.add(this.getResources().getString(R.string.saga4_3));
-        saga4.setNomeSubSaga(subSaga2);
-        this.listaSaga.add(saga4);
     }
 
     @Override
